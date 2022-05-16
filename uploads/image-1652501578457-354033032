@@ -1,0 +1,9 @@
+learn about symilinks
+
+sudo chmod -R 000 html
+
+sudo chown -R gideon:gideon html/     changing or giving the user to own this folder
+sudo chown -R bukola:
+
+assignment
+how to create a group and add a user to a group
