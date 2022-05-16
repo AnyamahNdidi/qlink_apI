@@ -4,7 +4,7 @@ const cloudinary = require("../ImageConfig/CloudinaryConfig");
 const res = require("express/lib/response");
 const postApplied = async (req, res) => {
 	try {
-		const jobId = req.params.id;
+		const jobId = req.params.userId;
 
 		const { name, email, experience, location, phoneNumber } = req.body;
 
