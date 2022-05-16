@@ -1,4 +1,5 @@
 const multer = require('multer')
+const path = require('path')
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -6,12 +7,12 @@ const storage = multer.diskStorage({
   },
   filename: function (req, file, cb) {
     const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9)
-    cb(null, file.fieldname + '-' + uniqueSuffix)
+    cb(null, file.fieldname + '-' + uniqueSuffix + path.extname(file.originalname))
   }
 })
 
 const upload = multer({ storage: storage }).single('avatar')
-const image = multer({ storage: storage }).single('image')
+const imageman = multer({ storage: storage }).single('image')
 
 
-module.exports = {upload, image}
+module.exports = {upload, imageman}
