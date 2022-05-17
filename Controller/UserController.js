@@ -207,7 +207,7 @@ const LoginUser = async (req, res) => {
 
 const getAlll = async (req, res) => {
 	try {
-		const data = await userData.find().populate("job");
+		const data = await userData.find().populate("job").populate("friends").populate("payment");
 
 		res.status(200).json({
 			msg: "all data found successfully",
@@ -222,7 +222,7 @@ const getAlll = async (req, res) => {
 
 const getOne = async (req, res) => {
 	try {
-		const data = await userData.findById(req.params.id).populate("job");
+		const data = await userData.findById(req.params.id).populate("job").populate("friends").populate("payment")
 		res.status(200).json({
 			msg: "user profile found",
 			data: data,

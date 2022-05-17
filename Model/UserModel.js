@@ -70,10 +70,11 @@ const userSchema = mongoose.Schema({
       type : mongoose.Schema.Types.ObjectId,
       ref : "pay"
   }],
-  conversation : [{
+ 
+  friends : [{
       type : mongoose.Schema.Types.ObjectId,
-      ref : "chat"
-  }]
+      ref : "addfriend"
+  }],
 }, {timestamps : true})
 
 module.exports = mongoose.model('users', userSchema)

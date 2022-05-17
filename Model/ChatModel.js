@@ -4,9 +4,12 @@ const userSchema = mongoose.Schema(
 		message: {
 			type: String,
 		},
+		sendTo: {
+			type: String,
+		},
 		userChat: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: "users",
+			ref: "addfriend",
 		},
 	},
 	{ timestamps: true },

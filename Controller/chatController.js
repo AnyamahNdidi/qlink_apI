@@ -1,5 +1,5 @@
 const chatData = require("../Model/ChatModel");
-const userData = require("../Model/UserModel");
+const userData = require("../Model/addChat");
 
 const ChatPost = async (req, res) => {
 	try {
