@@ -21,7 +21,7 @@ const db = mongoose.connection;
 db.on("open", ()=>{
 	const dbConnect = db.collection("chats").watch()
 	dbConnect.on("change", (change)=>{
-		console.log(change)
+		// console.log(change)
 		if(change.operationType === "insert"){
 
 			const file = {
