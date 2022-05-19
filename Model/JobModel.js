@@ -5,22 +5,25 @@ const jobSchema = mongoose.Schema(
 		jobTitle: {
 			type: String,
 		},
-		email: {
+		contactemail: {
 			type: String,
 		},
-		jobType: {
+		description: {
 			type: String,
 		},
-		salary: {
+		skillSet:{
+			type: String,
+		},
+		budget: {
 			type: String,
 		},
 		expreience: {
 			type: String,
 		},
-		qualification: {
+		projectDuration: {
 			type: String,
 		},
-		SelectTime: {
+		selectTime: {
 			type: String,
 		},
 		location: {

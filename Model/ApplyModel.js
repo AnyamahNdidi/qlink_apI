@@ -20,9 +20,6 @@ const applySchema = mongoose.Schema(
 		phoneNumber: {
 			type: String,
 		},
-
-      
-
 		userApply: {
 			type: mongoose.Schema.Types.ObjectId,
 			ref: "jobs",

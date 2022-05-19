@@ -29,7 +29,7 @@ const EditJob = async (req, res) => {
 			salary,
 			expreience,
 			qualification,
-			SelectTime,
+			selectTime,
 			location,
 		} = req.body;
 		const userID = req.params.id;

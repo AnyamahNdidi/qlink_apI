@@ -8,7 +8,7 @@ const postApplied = async (req, res) => {
 
 		const { name, email, experience, location, phoneNumber } = req.body;
 
-		const Image = await cloudinary.uploader.upload(req.file.path);
+		const imaged = await cloudinary.uploader.upload(req.file.path);
 
 		const createUser = await appyData.create({
 			name,
@@ -16,7 +16,7 @@ const postApplied = async (req, res) => {
 			experience,
 			location,
 			phoneNumber,
-			image: Image.secure_url,
+			image:imaged.secure_url,
 		});
 		const dUser = await jobData.findById(jobId);
 		createUser.userApply = dUser;
@@ -24,6 +24,7 @@ const postApplied = async (req, res) => {
 
 		dUser.applied.push(createUser);
 		await dUser.save();
+
 		res.status(201).json({
 			message: "product created",
 			product: createUser,
@@ -35,7 +36,7 @@ const postApplied = async (req, res) => {
 	}
 };
 
-const getApplyed = async () => {
+const getApplyed = async (req, res) => {
 	try {
 		const getData = await appyData.find();
 

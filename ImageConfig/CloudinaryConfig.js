@@ -1,8 +1,8 @@
 const cloudinary = require('cloudinary').v2
 cloudinary.config({ 
-  cloud_name: process.env.CLOUD_NAME, 
-  api_key: process.env.API_KEY, 
-  api_secret: process.env.API_SECRETE,
+  cloud_name:"giddy", 
+  api_key:"478564868449943", 
+  api_secret: "50RMyR-bHCqJu6lPYHdsWXsw_AQ",
   secure: true
 });
 
