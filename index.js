@@ -53,7 +53,7 @@ db.on("open", ()=>{
 
 // app.use(express.json())
 app.use("/api/user", require("./router/UserRouter"));
-app.use("/api/user", require("./router/chatRouter"));
+app.use("/", require("./router/chatRouter"));
 app.use("/api/user", require("./router/addFriendRouter"));
 app.use("/api/jobs", require("./router/jobRouter"));
 app.use("/api/jobs", require("./router/appliedRouter"));
