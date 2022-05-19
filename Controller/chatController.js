@@ -3,7 +3,7 @@ const userData = require("../Model/addChat");
 
 const ChatPost = async (req, res) => {
 	try {
-		const userID = req.params.id;
+		const userID = req.params.chatId;
 		const chatOwn = new chatData(req.body);
 		const userOwn = await userData.findById(userID);
 		chatOwn.userChat = userOwn;
