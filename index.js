@@ -1,9 +1,18 @@
 require("dotenv").config();
-require("./dbConfig/db");
+// require("./dbConfig/db");
 const express = require("express");
 const cors = require("cors");
 const http = require('http')
 const mongoose = require("mongoose")
+
+const url_online  = "mongodb+srv://gideon:NTp46J2P7Efieni@cluster0.7rupp.mongodb.net/QlinkDataDB?retryWrites=true&w=majority"
+
+
+mongoose.connect(url_online).then(()=>{
+    console.log('Database connected successfully...')
+}).catch((error)=>{
+    console.log(error)
+})
 
 const port = process.env.PORT || 6905;
 const app = express();
