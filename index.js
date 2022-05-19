@@ -12,6 +12,11 @@ const {Server} = require("socket.io");
 // const { on } = require("./Model/UserModel");
 const io = new Server(server, { cors: { origin: "*" } });
 
+io.on("connection", (socket) => {
+	console.log("connection has been established", socket.id);
+});
+
+
 app.use(express.json({ extended: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
@@ -21,7 +26,7 @@ const db = mongoose.connection;
 db.on("open", ()=>{
 	const dbConnect = db.collection("chats").watch()
 	dbConnect.on("change", (change)=>{
-		// console.log(change)
+		console.log(change)
 		if(change.operationType === "insert"){
 
 			const file = {
