@@ -32,8 +32,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.use("/api/user", require("./router/UserRouter"));
-app.use("/", require("./router/chatRouter"));
-app.use("/api/user", require("./router/addFriendRouter"));
+app.use("/api/user", require("./router/chatRouter"));
+app.use("/", require("./router/addFriendRouter"));
 app.use("/api/jobs", require("./router/jobRouter"));
 app.use("/api/jobs", require("./router/appliedRouter"));
 app.use("/api/pay", require("./router/payRouter"));
@@ -41,7 +41,7 @@ app.use("/api/pay", require("./router/payRouter"));
 const db = mongoose.connection;
 
 db.on("open", ()=>{
-	const dbConnect = db.collection("addfriends").watch()
+	const dbConnect = db.collection("addfriend").watch()
 
 	dbConnect.on("change", (change)=>{
 		console.log(change)

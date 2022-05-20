@@ -10,8 +10,8 @@ DeleteFriends
 } = require("../Controller/addChatController");
 
 router.post("/:ddid/friend", PostFriends);
-router.get("/chat/friend",GetAllFriends );
-router.get("/:id/friend/friends", getSingleFriends);
+router.get("/",GetAllFriends );
+router.get("/:id", getSingleFriends);
 // router.delete("/:id/chats/user", DeleteChat);
 
 module.exports = router;
