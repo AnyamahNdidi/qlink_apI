@@ -41,7 +41,7 @@ app.use("/api/pay", require("./router/payRouter"));
 const db = mongoose.connection;
 
 db.on("open", ()=>{
-	const dbConnect = db.collection("chats").watch()
+	const dbConnect = db.collection("addfriends").watch()
 
 	dbConnect.on("change", (change)=>{
 		console.log(change)
@@ -49,9 +49,11 @@ db.on("open", ()=>{
 
 			const file = {
 				_id:change.fullDocument._id,
-				message: change.fullDocument.message,
-				sendTo: change.fullDocument.sendTo,
-				userChat: change.fullDocument.userChat,
+				userName: change.fullDocument.userName,
+				userImage: change.fullDocument.userImage,
+				addedID: change.fullDocument.addedID,
+				userFriend: change.fullDocument.userFriend,
+				conversation: change.fullDocument.conversation,
 			};
 			io.emit("observer", file)
 
