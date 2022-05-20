@@ -6,10 +6,12 @@ const {
 	getSingleJob,
 	GetAllJobs,
 	DeleteJob,
+	queryData
 } = require("../Controller/JobController");
 
 router.post('/:id/jobposting', PostJobs)
 router.patch('/:id/:id/jobedit', EditJob)
+router.get('/myjobs/jobs', queryData)
 router.get('/:id/:id/singlejob', getSingleJob)
 router.delete("/:id/:id/removejob", DeleteJob);
 router.get("/alljobs", GetAllJobs);

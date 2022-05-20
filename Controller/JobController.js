@@ -102,10 +102,26 @@ const DeleteJob = async (req, res) => {
 	}
 };
 
+const queryData = async (req, res) => {
+  
+	const keyword = req.query.search ?
+	{
+		$or:[
+			{jobTitle: {$regex:req.query.search, $options:"i"}},
+			{skillSet: {$regex:req.query.search, $options:"i"}}
+		]
+	} : {}
+	
+	const jobUser = await jobData.find(keyword)
+	res.status(200).send(jobUser)
+
+}
+
 module.exports = {
 	PostJobs,
 	EditJob,
 	getSingleJob,
 	GetAllJobs,
 	DeleteJob,
+	queryData
 };
