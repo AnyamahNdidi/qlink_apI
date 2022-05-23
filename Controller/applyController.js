@@ -2,6 +2,8 @@ const jobData = require("../Model/JobModel");
 const appyData = require("../Model/ApplyModel");
 const cloudinary = require("../ImageConfig/CloudinaryConfig");
 const res = require("express/lib/response");
+const mongoose = require("mongoose")
+
 const postApplied = async (req, res) => {
 	try {
 		const jobId = req.params.userId;
@@ -22,7 +24,7 @@ const postApplied = async (req, res) => {
 		createUser.userApply = dUser;
 		await createUser.save();
 
-		dUser.applied.push(createUser);
+		dUser.applied.push(mongoose.Types.ObjectId(createUser._id));
 		await dUser.save();
 
 		res.status(201).json({

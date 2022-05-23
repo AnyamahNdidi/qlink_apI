@@ -1,6 +1,7 @@
 const { response } = require("express");
 const jobData = require("../Model/JobModel");
 const userData = require("../Model/UserModel");
+const mongoose = require("mongoose")
 
 const PostJobs = async (req, res) => {
 	try {
@@ -10,7 +11,7 @@ const PostJobs = async (req, res) => {
 		jobOwn.user = userOwn;
 		await jobOwn.save();
 
-		userOwn.job.push(jobOwn);
+		userOwn.job.push(mongoose.Types.ObjectId(jobOwn._id));
 		await userOwn.save();
 		res.status(201).json({
 			data: jobOwn,

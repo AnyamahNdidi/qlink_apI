@@ -1,5 +1,6 @@
 const chatData = require("../Model/ChatModel");
 const userData = require("../Model/addChat");
+const mongoose = require("mongoose")
 
 const ChatPost = async (req, res) => {
 	try {
@@ -9,7 +10,7 @@ const ChatPost = async (req, res) => {
 		chatOwn.userChat = userOwn;
 		await chatOwn.save();
 
-		userOwn.conversation.push(chatOwn);
+		userOwn.conversation.push(mongoose.Types.ObjectId(chatOwn._id));
 		await userOwn.save();
 		res.status(201).json({
 			data: chatOwn,
