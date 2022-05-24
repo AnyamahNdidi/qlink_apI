@@ -47,6 +47,9 @@ const userSchema = mongoose.Schema({
         type : String,
          default : "write a bio about yourself"
     },
+    verified:{
+        type:Boolean
+    },
     gender : {
         type : String,
          default : "male"
@@ -57,6 +60,9 @@ const userSchema = mongoose.Schema({
     },
     isDeveloper : {
       type : Boolean
+    },
+    developerToken: {
+        type: String,
     },
 
     isAdmin : {

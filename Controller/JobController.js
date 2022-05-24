@@ -79,7 +79,9 @@ const getSingleJob = async (req, res) => {
 
 const GetAllJobs = async (req, res) => {
 	try {
-		const getData = await jobData.find().populate("applied");
+		const { limit = 20 } = req.query;
+		
+		const getData = await jobData.find().populate("applied").limit(limit);
 		res.status(200).json(getData);
 	} catch (error) {
 		res.status(400).json({ message: error.message });
