@@ -121,10 +121,10 @@ const RegisterDeveloper = async (req, res) => {
 			to:email,
 			subject:"OTP Verification",
 			html:`
-			<h1>This is to  verify your account please use click this <a 
+			<h1>This is to verify your account please use click this <a 
 			href="http://localhost:3001/api/user/dev/${CreateUser._id}/${getIkoken}"
 			>link</a> </h1>
-			<h3>copy this REFRENCE CODE <span style="color:green">${testToken}</span>  and finish up your reg. <br/></h3>
+			<h3>c\Copy this REFRENCE CODE <span style="color:green">${testToken}</span>  and finish up your reg. <br/></h3>
 			`
 		}
 		transport.sendMail(mailOptions, (err, info)=>{
