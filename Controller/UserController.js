@@ -33,7 +33,7 @@ const verify = async (req, res, next) => {
 		if (authCheck) {
 			const token = await authCheck;
 
-			jwt.verify(token, process.env.JWT_SECRETE, (error, payload) => {
+			jwt.verify(token, "50RMyR-bHCqJu6lPYHdsWXsw_AQ", (error, payload) => {
 				if (error) {
 					res.status(400).json({ message: `error found ${error.message}` });
 				} else {
