@@ -108,7 +108,7 @@ const RegisterDeveloper = async (req, res) => {
 
 		const createToken = crypto.randomBytes(32).toString("hex")
 		
-		const getIkoken = jwt.sign({createToken}, process.env.JWT_SECRETE, {expiresIn : "20m"})
+		const getIkoken = jwt.sign({createToken}, "50RMyR-bHCqJu6lPYHdsWXsw_AQ", {expiresIn : "20m"})
 		
 		await verifiedModel.create({
 			token:getIkoken,
@@ -276,7 +276,7 @@ const RegisterClient = async (req, res) => {
 
 		const createToken = crypto.randomBytes(32).toString("hex")
 		const testToken = crypto.randomBytes(32).toString("binary")
-		const getIkoken = jwt.sign({createToken}, process.env.JWT_SECRETE, {expiresIn : "20m"})
+		const getIkoken = jwt.sign({createToken}, "50RMyR-bHCqJu6lPYHdsWXsw_AQ", {expiresIn : "20m"})
 		
 		await verifiedModel.create({
 			token:getIkoken,
@@ -393,7 +393,7 @@ const LoginUser = async (req, res) => {
 
 		const createToken = crypto.randomBytes(32).toString("hex")
 		// const testToken = crypto.randomBytes(32).toString("binary")
-		const getIkoken = jwt.sign({createToken}, process.env.JWT_SECRETE, {expiresIn : "20m"})
+		const getIkoken = jwt.sign({createToken}, "50RMyR-bHCqJu6lPYHdsWXsw_AQ", {expiresIn : "20m"})
 		
 	
 
