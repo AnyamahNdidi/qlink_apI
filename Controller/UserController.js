@@ -290,7 +290,7 @@ const RegisterClient = async (req, res) => {
             subject:"registration verifications",
             html:`
             <h3>this is to verify your account, pease use the 
-            <a href="http://localhost:300/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
+            <a href="http://localhost:3000/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
             
             `
         }
