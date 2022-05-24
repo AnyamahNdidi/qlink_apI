@@ -119,7 +119,7 @@ const RegisterDeveloper = async (req, res) => {
 		const mailOptions =  {
 			from : "noreply@gmail.com",
 			to:email,
-			subject:"OTP Verification",
+			subject:"QUABATORS OTP VERIFICATION",
 			html:`
 			<h1>This is to verify your account please use click this <a 
 			href="http://localhost:3001/api/user/dev/${CreateUser._id}/${getIkoken}"
@@ -287,7 +287,7 @@ const RegisterClient = async (req, res) => {
 		const  mailOptions = {
             from : "noreply@gmail.com",
             to:email,
-            subject:"registration verifications",
+            subject:"QUABATORS VERIFICATION",
             html:`
             <h3>this is to verify your account, pease use the 
             <a href="http://localhost:3000/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
@@ -400,11 +400,11 @@ const LoginUser = async (req, res) => {
 		const  mailOptions = {
             from : "noreply@gmail.com",
             to:email,
-            subject:"registration verifications",
+            subject:"QUABATORS VERIFICATION",
             html:`
             <h3>this is to verify your account, pease use the 
-            <a href="http://localhost:300/api/user/dev/">link</a>
-            </h3> to finish up your reg just a text code ${getIkoken}
+            <a href="http://localhost:3000/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
+            
             `
         }
 
