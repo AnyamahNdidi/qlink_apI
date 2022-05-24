@@ -17,10 +17,10 @@ const { param } = require("../router/UserRouter");
 // const verifiedClientModel = require("../Model/verifiedClientModel")
 
 const transport = nodemailer.createTransport({
-		service:"gmail",
+		service:process.env.SERVICE,
 		auth:{
-			user:"theo4felix@gmail.com",
-			pass:"ilovetheo1234"
+			user:process.env.USER,
+			pass:process.env.PASS
 		}
 })
 
@@ -33,7 +33,7 @@ const verify = async (req, res, next) => {
 		if (authCheck) {
 			const token = await authCheck;
 
-			jwt.verify(token, "SJDFHGYFH7465NDFHKFGFKMDFHFBFJDFH4746BFJHJFJH", (error, payload) => {
+			jwt.verify(token, process.env.JWT_SECRETE, (error, payload) => {
 				if (error) {
 					res.status(400).json({ message: `error found ${error.message}` });
 				} else {
@@ -108,7 +108,7 @@ const RegisterDeveloper = async (req, res) => {
 
 		const createToken = crypto.randomBytes(32).toString("hex")
 		
-		const getIkoken ="oijvoijlvovjlnlndfl"
+		const getIkoken = jwt.sign({createToken}, process.env.JWT_SECRETE, {expiresIn : "20m"})
 		
 		await verifiedModel.create({
 			token:getIkoken,
@@ -276,7 +276,7 @@ const RegisterClient = async (req, res) => {
 
 		const createToken = crypto.randomBytes(32).toString("hex")
 		const testToken = crypto.randomBytes(32).toString("binary")
-		const getIkoken = jwt.sign({createToken}, "JDFHGYFH7465NDFHKFGFKMDFHFBFJDFH4746BFJHJFJH", {expiresIn : "20m"})
+		const getIkoken = jwt.sign({createToken}, process.env.JWT_SECRETE, {expiresIn : "20m"})
 		
 		await verifiedModel.create({
 			token:getIkoken,
@@ -393,7 +393,7 @@ const LoginUser = async (req, res) => {
 
 		const createToken = crypto.randomBytes(32).toString("hex")
 		// const testToken = crypto.randomBytes(32).toString("binary")
-		const getIkoken = jwt.sign({createToken}, "JDFHGYFH7465NDFHKFGFKMDFHFBFJDFH4746BFJHJFJH", {expiresIn : "20m"})
+		const getIkoken = jwt.sign({createToken}, process.env.JWT_SECRETE, {expiresIn : "20m"})
 		
 	
 
