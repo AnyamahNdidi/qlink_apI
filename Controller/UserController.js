@@ -108,7 +108,7 @@ const RegisterDeveloper = async (req, res) => {
 
 		const createToken = crypto.randomBytes(32).toString("hex")
 		
-		const getIkoken = jwt.sign({createToken}, "JDFHGYFH7465NDFHKFGFKMDFHFBFJDFH4746BFJHJFJH", {expiresIn : "20m"})
+		const getIkoken = jwt.sign(JSON.parse(JSON.stringify(createToken)), "JDFHGYFH7465NDFHKFGFKMDFHFBFJDFH4746BFJHJFJH", {expiresIn : "20m"})
 		
 		await verifiedModel.create({
 			token:getIkoken,
