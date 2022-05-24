@@ -383,7 +383,7 @@ const LoginUser = async (req, res) => {
 			if (checkPassword) {
 				if(user.verified){
 					const { password, ...info } = user._doc;
-				const token = jwt.sign({ _id: CreateUser._id, isDeveloper: CreateUser.isDeveloper,verified: CreateUser.verified,},process.env.JWT_SECRETE,{ expiresIn: "2d" }
+				const token = jwt.sign({ _id: user._id, isDeveloper: user.isDeveloper,verified: user.verified,},process.env.JWT_SECRETE,{ expiresIn: "2d" }
 				)
 
 				res.status(200).json({
