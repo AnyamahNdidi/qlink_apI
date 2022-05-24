@@ -18,8 +18,6 @@ const { param } = require("../router/UserRouter");
 
 const transport = nodemailer.createTransport({
 		service:process.env.SERVICE,
-		port:process.env.NODEMAILERPORT,
-		secure:true,
 		auth:{
 			user:process.env.USER,
 			pass:process.env.PASS
