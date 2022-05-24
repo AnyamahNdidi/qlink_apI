@@ -117,7 +117,7 @@ const RegisterDeveloper = async (req, res) => {
 		})
 
 		const mailOptions =  {
-			from : "theo4feliX@gmail.com",
+			from : "noreply@gmail.com",
 			to:email,
 			subject:"OTP Verification",
 			html:`
@@ -285,7 +285,7 @@ const RegisterClient = async (req, res) => {
 		})
 
 		const  mailOptions = {
-            from : "theo4felix@gmail.com",
+            from : "noreply@gmail.com",
             to:email,
             subject:"registration verifications",
             html:`
@@ -398,7 +398,7 @@ const LoginUser = async (req, res) => {
 	
 
 		const  mailOptions = {
-            from : "theo4felix@gmail.com",
+            from : "noreply@gmail.com",
             to:email,
             subject:"registration verifications",
             html:`
