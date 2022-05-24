@@ -100,7 +100,8 @@ const RegisterDeveloper = async (req, res) => {
 			websiteUrl,
 			description,
 			gender,
-			location,
+			verified:false,
+			isDeveloper : false,
 			developerToken:testToken,
 			isAdmin: false,
 			password: hash,
@@ -139,7 +140,9 @@ const RegisterDeveloper = async (req, res) => {
 			msg: "please Check your mail for code reference",
 			data: {
 				CreateUser,
-				token: generateToken({ _id: CreateUser._id, name: CreateUser.name }),
+			
+				token: jwt.sign({ _id: CreateUser._id, isDeveloper: CreateUser.isDeveloper,verified: CreateUser.verified,},process.env.JWT_SECRETE,{ expiresIn: "2d" }
+				)
 			},
 		});
 	} catch (err) {
@@ -270,6 +273,8 @@ const RegisterClient = async (req, res) => {
 			description,
 			gender,
 			location,
+			verified:false,
+			isDeveloper : false,
 			isAdmin: false,
 			password: hash,
 		});
@@ -307,7 +312,8 @@ const RegisterClient = async (req, res) => {
 			msg: "user created please check your mail and click the link to verify your account",
 			data: {
 				CreateUser,
-				token: generateToken({ _id: CreateUser._id, name: CreateUser.name }),
+				token: jwt.sign({ _id: CreateUser._id, isDeveloper: CreateUser.isDeveloper,verified: CreateUser.verified,},process.env.JWT_SECRETE,{ expiresIn: "2d" }
+				),
 			},
 		});
 	} catch (err) {
@@ -377,11 +383,8 @@ const LoginUser = async (req, res) => {
 			if (checkPassword) {
 				if(user.verified){
 					const { password, ...info } = user._doc;
-				const token = generateToken({
-					id: user._id,
-					email: user.email,
-					name: user.email,
-				});
+				const token = jwt.sign({ _id: CreateUser._id, isDeveloper: CreateUser.isDeveloper,verified: CreateUser.verified,},process.env.JWT_SECRETE,{ expiresIn: "2d" }
+				)
 
 				res.status(200).json({
 					message: `welcome back ${user.name}`,
