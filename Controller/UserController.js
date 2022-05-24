@@ -17,10 +17,10 @@ const { param } = require("../router/UserRouter");
 // const verifiedClientModel = require("../Model/verifiedClientModel")
 
 const transport = nodemailer.createTransport({
-		service:process.env.SERVICE,
+		service:"gmail",
 		auth:{
-			user:process.env.USER,
-			pass:process.env.PASS
+			user:"theo4felix@gmail.com",
+			pass:"ilovetheo1234"
 		}
 })
 
