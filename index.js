@@ -39,29 +39,29 @@ app.use("/api/jobs", require("./router/jobRouter"));
 app.use("/api/jobs", require("./router/appliedRouter"));
 app.use("/api/pay", require("./router/payRouter"));
 
-const db = mongoose.connection;
+// const db = mongoose.connection;
 
-db.on("open", ()=>{
-	const dbConnect = db.collection("addfriend").watch()
+// db.on("open", ()=>{
+// 	const dbConnect = db.collection("addfriend").watch()
 
-	dbConnect.on("change", (change)=>{
-		console.log(change)
-		if(change.operationType === "insert"){
+// 	dbConnect.on("change", (change)=>{
+// 		console.log(change)
+// 		if(change.operationType === "insert"){
 
-			const file = {
-				_id:change.fullDocument._id,
-				userName: change.fullDocument.userName,
-				userImage: change.fullDocument.userImage,
-				addedID: change.fullDocument.addedID,
-				userFriend: change.fullDocument.userFriend,
-				conversation: change.fullDocument.conversation,
-			};
-			io.emit("observer", file)
+// 			const file = {
+// 				_id:change.fullDocument._id,
+// 				userName: change.fullDocument.userName,
+// 				userImage: change.fullDocument.userImage,
+// 				addedID: change.fullDocument.addedID,
+// 				userFriend: change.fullDocument.userFriend,
+// 				conversation: change.fullDocument.conversation,
+// 			};
+// 			io.emit("observer", file)
 
-		}
+// 		}
 
-	})
-})
+// 	})
+// })
 
 // app.use(express.json())
 
