@@ -123,7 +123,7 @@ const RegisterDeveloper = async (req, res) => {
 			subject:"QUABATORS OTP VERIFICATION",
 			html:`
 			<h1>This is to verify your account please use click this <a 
-			href="http://localhost:3000/api/user/dev/${CreateUser._id}/${getIkoken}"
+			href="https://inspiring-heliotrope-fca513.netlify.app/api/user/dev/${CreateUser._id}/${getIkoken}"
 			>link</a> </h1>
 			<h3>c\Copy this REFRENCE CODE <span style="color:green">${testToken}</span>  and finish up your reg. <br/></h3>
 			`
@@ -295,7 +295,7 @@ const RegisterClient = async (req, res) => {
             subject:"QUABATORS VERIFICATION",
             html:`
             <h3>this is to verify your account, pease use the 
-            <a href="http://localhost:3000/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
+            <a href="https://inspiring-heliotrope-fca513.netlify.app/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
             
             `
         }
@@ -412,7 +412,7 @@ const LoginUser = async (req, res) => {
 				subject:"QUABATORS OTP VERIFICATION",
 				html:`
 				<h1>This is to verify your account please use click this <a 
-				href="http://localhost:3000/api/user/dev/${user._id}/${getIkoken}"
+				href="https://inspiring-heliotrope-fca513.netlify.app/api/user/dev/${user._id}/${getIkoken}"
 				>link</a> </h1>
 				<h3>c\Copy this REFRENCE CODE <span style="color:green">${testToken}</span>  and finish up your reg. <br/></h3>
 				`
@@ -436,7 +436,7 @@ const LoginUser = async (req, res) => {
 				subject:"QUABATORS VERIFICATION",
 				html:`
 				<h3>this is to verify your account, pease use the 
-				<a href="http://localhost:3000/api/user/client/reg/${user._id}/${getIkoken}">link</a>
+				<a href="https://inspiring-heliotrope-fca513.netlify.app/api/user/client/reg/${user._id}/${getIkoken}">link</a>
 				
 				`
 			}
