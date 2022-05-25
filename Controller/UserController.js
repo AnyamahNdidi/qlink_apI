@@ -204,7 +204,7 @@ const verifiedDeveloper = async (req, res) => {
 					{ new: true }
 				);
 
-				res.status(404).json({
+				res.status(201).json({
 					message: "Awesome you can now sign in",
 				});
 			} else {
