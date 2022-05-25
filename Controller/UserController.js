@@ -101,7 +101,7 @@ const RegisterDeveloper = async (req, res) => {
 			description,
 			gender,
 			verified:false,
-			isDeveloper : false,
+			isDeveloper : true,
 			developerToken:testToken,
 			isAdmin: false,
 			password: hash,
@@ -123,7 +123,7 @@ const RegisterDeveloper = async (req, res) => {
 			subject:"QUABATORS OTP VERIFICATION",
 			html:`
 			<h1>This is to verify your account please use click this <a 
-			href="http://localhost:3001/api/user/dev/${CreateUser._id}/${getIkoken}"
+			href="http://localhost:3000/api/user/dev/${CreateUser._id}/${getIkoken}"
 			>link</a> </h1>
 			<h3>c\Copy this REFRENCE CODE <span style="color:green">${testToken}</span>  and finish up your reg. <br/></h3>
 			`
@@ -200,7 +200,7 @@ const verifiedDeveloper = async (req, res) => {
 			if (developerToken === user.developerToken) {
 				await userData.findByIdAndUpdate(
 					user._id,
-					{ verified: true, isDeveloper: true },
+					{ verified: true},
 					{ new: true }
 				);
 
@@ -376,6 +376,8 @@ const LoginUser = async (req, res) => {
 
 		const user = await userData.findOne({ email });
 		if (user) {
+
+
 			const checkPassword = await bcrypt.compare(
 				req.body.password,
 				user.password,
@@ -391,42 +393,81 @@ const LoginUser = async (req, res) => {
 					data: { ...info, token },
 				});
 
+				
 
 				}else{
 
 		const createToken = crypto.randomBytes(32).toString("hex")
 		// const testToken = crypto.randomBytes(32).toString("binary")
+		const testToken = crypto.randomBytes(4).toString("hex")
 		const getIkoken = jwt.sign({createToken}, process.env.JWT_SECRETE, {expiresIn : "20m"})
 		
 	
 
-		const  mailOptions = {
-            from : "noreply@gmail.com",
-            to:email,
-            subject:"QUABATORS VERIFICATION",
-            html:`
-            <h3>this is to verify your account, pease use the 
-            <a href="http://localhost:3000/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
-            
-            `
-        }
-
-		transport.sendMail(mailOptions, (err, info)=>{
-			if(err){
-				console.log(err.message)
-			}else{
-				console.log("mail sent", info.response)
+	   {
+		   if(user.isDeveloper) {
+			const mailOptions =  {
+				from : "noreply@gmail.com",
+				to:email,
+				subject:"QUABATORS OTP VERIFICATION",
+				html:`
+				<h1>This is to verify your account please use click this <a 
+				href="http://localhost:3000/api/user/dev/${user._id}/${getIkoken}"
+				>link</a> </h1>
+				<h3>c\Copy this REFRENCE CODE <span style="color:green">${testToken}</span>  and finish up your reg. <br/></h3>
+				`
 			}
-		})
+			transport.sendMail(mailOptions, (err, info)=>{
+				if(err){
+					res.status(404).json({
+						message : "message has not been sent to your mail, please check your email agin"
+					})
+				}else{
+					res.status(200).json({
+						message : "message has been sent to your mail"
+					})
+				}
+			})
+	
+		   }else{
+			const  mailOptionse = {
+				from : "noreply@gmail.com",
+				to:email,
+				subject:"QUABATORS VERIFICATION",
+				html:`
+				<h3>this is to verify your account, pease use the 
+				<a href="http://localhost:3000/api/user/client/reg/${user._id}/${getIkoken}">link</a>
+				
+				`
+			}
+			transport.sendMail(mailOptionse, (err, info)=>{
+				if(err){
+					res.status(404).json({
+						message : "message has not been sent to your mail, please check your email agin"
+					})
+				}else{
+					res.status(200).json({
+						message : "message has been sent to your mail"
+					})
+				}
+			})
+	
+		   }
+	   }
 
+	
 
 				}
 
-
+             
 				
 			} else {
 				res.status(400).json({ message: "password is incorrect" });
 			}
+
+
+
+
 		} else {
 			res.status(400).json({ message: "Email doesnt exist" });
 		}
