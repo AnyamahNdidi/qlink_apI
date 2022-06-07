@@ -32,6 +32,7 @@ const EditJob = async (req, res) => {
 			qualification,
 			selectTime,
 			location,
+			description
 		} = req.body;
 		const userID = req.params.id;
 		const jobOwn = await jobData.findById(req.params.id);
@@ -47,8 +48,9 @@ const EditJob = async (req, res) => {
 				salary,
 				expreience,
 				qualification,
-				SelectTime,
+				selectTime,
 				location,
+				description
 			},
 			{ new: true },
 		);

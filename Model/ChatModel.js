@@ -7,12 +7,15 @@ const userSchema = mongoose.Schema(
 		sendTo: {
 			type: String,
 		},
+		sendingUser: {
+			type: String,
+		},
 		userChat: {
 			type: mongoose.Schema.Types.ObjectId,
-			ref: "addfriend",
+			ref: "addfriends",
 		},
 	},
 	{ timestamps: true },
 );
 
-module.exports = mongoose.model("chat", userSchema);
+module.exports = mongoose.model("chats", userSchema);

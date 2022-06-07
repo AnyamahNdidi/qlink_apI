@@ -1,10 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { imageman } = require("../ImageConfig/MulterConfig");
-// const {upload} = require("../ImageConfig/MulterConfig")
-const { postApplied, getApplyed } = require("../Controller/applyController");
 
-router.post("/:userId/apply", imageman, postApplied);
-router.post("/apply", getApplyed);
+const {
+	postApplied,
+	getApplyed,
+	getApplyedSingle,
+} = require("../Controller/applyController");
+
+router.post("/:userId/apply", postApplied);
+router.get("/apply", getApplyed);
+router.get("/:id/apply", getApplyedSingle);
 
 module.exports = router;

@@ -8,17 +8,15 @@ const applySchema = mongoose.Schema(
 		email: {
 			type: String,
 		},
-		image: {
+		userCv: {
 			type: String,
 		},
-		expreience: {
+		userId: {
 			type: String,
 		},
-		location: {
-			type: String,
-		},
-		phoneNumber: {
-			type: String,
+		
+		applicationletter : {
+			type : String
 		},
 		userApply: {
 			type: mongoose.Schema.Types.ObjectId,

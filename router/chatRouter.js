@@ -10,8 +10,8 @@ const {
 } = require("../Controller/chatController");
 
 router.post("/:chatId/chat", ChatPost);
-router.get("/chat/user", GetAllChat);
-router.get("/:id/chats/chat", getSingleChat);
-router.delete("/:id/chats/user", DeleteChat);
+router.get("/", GetAllChat);
+router.get("/:id", getSingleChat);
+router.delete("/:id", DeleteChat);
 
 module.exports = router;

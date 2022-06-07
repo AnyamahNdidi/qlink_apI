@@ -2,23 +2,25 @@ const jobData = require("../Model/JobModel");
 const appyData = require("../Model/ApplyModel");
 const cloudinary = require("../ImageConfig/CloudinaryConfig");
 const res = require("express/lib/response");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const userModel = require("../Model/UserModel");
 
 const postApplied = async (req, res) => {
 	try {
 		const jobId = req.params.userId;
 
-		const { name, email, experience, location, phoneNumber } = req.body;
+	
 
-		const imaged = await cloudinary.uploader.upload(req.file.path);
+		const { name, email, userCv, applicationletter, userId } = req.body;
+
+		
 
 		const createUser = await appyData.create({
 			name,
 			email,
-			experience,
-			location,
-			phoneNumber,
-			image:imaged.secure_url,
+			userCv,
+			applicationletter,
+			userId
 		});
 		const dUser = await jobData.findById(jobId);
 		createUser.userApply = dUser;
@@ -49,8 +51,20 @@ const getApplyed = async (req, res) => {
 		});
 	}
 };
+const getApplyedSingle = async (req, res) => {
+	try {
+		const getData = await appyData.findById(req.params.id);
+
+		res.status(200).json(getData);
+	} catch (error) {
+		res.status(400).json({
+			message: error.message,
+		});
+	}
+};
 
 module.exports = {
 	postApplied,
 	getApplyed,
+	getApplyedSingle,
 };
