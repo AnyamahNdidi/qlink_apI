@@ -26,7 +26,7 @@ const { Server } = require("socket.io");
 // const { on } = require("./Model/UserModel");
 const io = new Server(server, {
 	cors: {
-		origin: "http://localhost:3000",
+		origin: "https://bright-axolotl-c1a0fc.netlify.app",
 		methods: ["GET", "POST", "PUT", "DELETE"],
 	},
 });
