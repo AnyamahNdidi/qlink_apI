@@ -26,7 +26,7 @@ const { Server } = require("socket.io");
 // const { on } = require("./Model/UserModel");
 const io = new Server(server, {
 	cors: {
-		origin: "https://shiny-blancmange-b361a8.netlify.app",
+		origin: "https://qubatorsqlink.netlify.app",
 		methods: ["GET", "POST", "PUT", "DELETE"],
 	},
 });
