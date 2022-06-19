@@ -104,7 +104,6 @@ const RegisterDeveloper = async (req, res) => {
 			cv,
 			verified: false,
 			isDeveloper: true,
-			developerToken: testToken,
 			isAdmin: false,
 			password: hash,
 		});
@@ -126,10 +125,10 @@ const RegisterDeveloper = async (req, res) => {
 			to: email,
 			subject: "QUABATORS OTP VERIFICATION",
 			html: `
-			<h1>This is to verify your account please use click this <a 
-			href="https://qubatorsqlink.netlify.app/api/user/dev/${CreateUser._id}/${getIkoken}"
+			<h1>Click on the Link to Verify Your account   <a 
+			href="https://qlinkappi.herokuapp.com/api/user/dev/${CreateUser._id}/${getIkoken}"
 			>link</a> </h1>
-			<h3>c\Copy this REFRENCE CODE <span style="color:green">${testToken}</span>  and finish up your reg. <br/></h3>
+	
 			`,
 		};
 		transport.sendMail(mailOptions, (err, info) => {
@@ -169,7 +168,7 @@ const getDevToken = async (req, res) => {
 			await userData.findByIdAndUpdate(
 				req.params.id,
 				{
-					myToken: req.params.token,
+					verified: true,
 				},
 				{ new: true },
 			);
@@ -200,26 +199,18 @@ const getDevToken = async (req, res) => {
 
 const verifiedDeveloper = async (req, res) => {
 	try {
-		const { developerToken } = req.body;
-
 		const user = await userData.findById(req.params.id);
 
 		if (user) {
-			if (developerToken === user.developerToken) {
-				await userData.findByIdAndUpdate(
-					user._id,
-					{ verified: true },
-					{ new: true },
-				);
+			await userData.findByIdAndUpdate(
+				user._id,
+				{ verified: true },
+				{ new: true },
+			);
 
-				res.status(201).json({
-					message: "Awesome you can now sign in",
-				});
-			} else {
-				res.status(404).json({
-					message: "no user fine with this details",
-				});
-			}
+			res.status(201).json({
+				message: "Awesome you can now sign in",
+			});
 		} else {
 			res.status(404).json({
 				message: "no user",
@@ -306,8 +297,8 @@ const RegisterClient = async (req, res) => {
 			to: email,
 			subject: "QUABATORS VERIFICATION",
 			html: `
-            <h3>this is to verify your account, pease use the 
-            <a href="https://qubatorsqlink.netlify.app/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
+            <h3>Click on the Link to Verify Your account 
+            <a href="https://qlinkappi.herokuapp.com/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
             `,
 		};
 
@@ -424,10 +415,10 @@ const LoginUser = async (req, res) => {
 								to: email,
 								subject: "QUABATORS OTP VERIFICATION",
 								html: `
-				<h1>This is to verify your account please use click this <a 
-				href="https://qubatorsqlink.netlify.app/api/user/dev/${user._id}/${getIkoken}"
+				<h1>Click on the Link to Verify Your account  <a 
+				href="https://qlinkappi.herokuapp.com/api/user/dev/${user._id}/${getIkoken}"
 				>link</a> </h1>
-				<h3>c\Copy this REFRENCE CODE <span style="color:green">${testToken}</span>  and finish up your reg. <br/></h3>
+			
 				`,
 							};
 							transport.sendMail(mailOptions, (err, info) => {
@@ -448,7 +439,7 @@ const LoginUser = async (req, res) => {
 								to: email,
 								subject: "QUABATORS VERIFICATION",
 								html: `
-				<h3>this is to verify your account, pease use the 
+				<h3>Click on the Link to Verify Your account 
 				<a href="https://qubatorsqlink.netlify.app/api/user/client/reg/${user._id}/${getIkoken}">link</a>
 				
 				`,

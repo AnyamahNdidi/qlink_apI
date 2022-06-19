@@ -65,9 +65,7 @@ const userSchema = mongoose.Schema(
 		isDeveloper: {
 			type: Boolean,
 		},
-		developerToken: {
-			type: String,
-		},
+	
 
 		isAdmin: {
 			type: Boolean,

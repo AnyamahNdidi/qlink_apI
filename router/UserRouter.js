@@ -13,17 +13,17 @@ const {
 	getOnePayment,
 	getDevToken,
 	verifiedDeveloper,
-	getClientToken
+	getClientToken,
 } = require("../Controller/UserController");
 
 //developer router registration
 router.post("/developerReg", upload, RegisterDeveloper);
-router.get("/dev/:id/:token", getDevToken )
-router.post("/dev/:id/:token", verifiedDeveloper )
+router.get("/dev/:id/:token", getDevToken);
+router.post("/dev/:id/:token", verifiedDeveloper);
 
 //client registration
 router.route("/clientReg/reg", upload).post(RegisterClient);
-router.route("/client/reg/:id/:token" ).get(getClientToken);
+router.route("/client/reg/:id/:token").get(getClientToken);
 
 router.route("/login").post(LoginUser);
 router.get("/", getAlll);
