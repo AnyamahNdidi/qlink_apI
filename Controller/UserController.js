@@ -126,7 +126,7 @@ const RegisterDeveloper = async (req, res) => {
 			subject: "QUABATORS OTP VERIFICATION",
 			html: `
 			<h1>Click on the Link to Verify Your account   <a 
-			href="https://qlinkappi.herokuapp.com/api/user/dev/${CreateUser._id}/${getIkoken}"
+			href="https://qubatorsqlink.netlify.app/api/user/dev/${CreateUser._id}/${getIkoken}"
 			>link</a> </h1>
 	
 			`,
@@ -298,7 +298,7 @@ const RegisterClient = async (req, res) => {
 			subject: "QUABATORS VERIFICATION",
 			html: `
             <h3>Click on the Link to Verify Your account 
-            <a href="https://qlinkappi.herokuapp.com/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
+            <a href="https://qubatorsqlink.netlify.app/api/user/client/reg/${CreateUser._id}/${getIkoken}">link</a>
             `,
 		};
 
@@ -416,7 +416,7 @@ const LoginUser = async (req, res) => {
 								subject: "QUABATORS OTP VERIFICATION",
 								html: `
 				<h1>Click on the Link to Verify Your account  <a 
-				href="https://qlinkappi.herokuapp.com/api/user/dev/${user._id}/${getIkoken}"
+				href="https://qubatorsqlink.netlify.app/api/user/dev/${user._id}/${getIkoken}"
 				>link</a> </h1>
 			
 				`,
